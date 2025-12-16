@@ -16,24 +16,19 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
     body{
       background:var(--bg);
       color:var(--fg);
-      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui;
       line-height:1.55;
-      overflow-x:hidden;
     }
 
     .bg{
       position:fixed;
       inset:0;
       z-index:-1;
-      pointer-events:none;
       background:
         radial-gradient(1000px 600px at 50% 20%, rgba(51,255,51,.10), transparent 60%),
-        radial-gradient(900px 500px at 20% 80%, rgba(51,255,51,.06), transparent 60%),
-        radial-gradient(900px 500px at 80% 80%, rgba(51,255,51,.05), transparent 60%),
         #000;
     }
 
@@ -41,22 +36,15 @@
       position:absolute;
       left:50%;
       top:55%;
-      width:min(1200px,160vw);
-      height:min(900px,130vh);
+      width:140vw;
+      height:120vh;
       transform:translate(-50%,-50%) perspective(900px) rotateX(62deg);
-      opacity:.35;
-      filter:drop-shadow(0 0 18px rgba(51,255,51,.10));
-    }
-
-    .grid3d::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(to right, rgba(51,255,51,.14) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(51,255,51,.14) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(closest-side, rgba(0,0,0,.85) 0%, rgba(0,0,0,.75) 40%, transparent 72%);
+      opacity:.3;
+      background:
+        linear-gradient(to right, rgba(51,255,51,.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(51,255,51,.15) 1px, transparent 1px);
+      background-size:44px 44px;
+      mask-image: radial-gradient(circle, black 0%, transparent 70%);
     }
 
     .wrap{
@@ -68,7 +56,6 @@
     header{
       display:flex;
       justify-content:space-between;
-      align-items:flex-end;
       margin-bottom:24px;
     }
 
@@ -77,11 +64,9 @@
       font-weight:600;
     }
 
-    .accent{color:var(--accent)}
-
     nav a{
       color:var(--muted);
-      margin-left:14px;
+      margin-left:16px;
       font-size:13px;
       text-decoration:none;
     }
@@ -93,7 +78,6 @@
       border:1px solid var(--border);
       border-radius:18px;
       background:rgba(0,0,0,.55);
-      overflow:hidden;
     }
 
     .section{
@@ -106,6 +90,7 @@
     h2{
       font-size:14px;
       margin-bottom:8px;
+      color:#eaeaea;
     }
 
     p, li{
@@ -115,15 +100,15 @@
 
     ul{padding-left:18px}
 
-    footer{
-      margin-top:18px;
-      font-size:12px;
-      color:rgba(255,255,255,.45);
-      text-align:center;
-    }
-
     .page{display:none}
     .page.active{display:block}
+
+    footer{
+      margin-top:18px;
+      text-align:center;
+      font-size:12px;
+      color:rgba(255,255,255,.45);
+    }
   </style>
 </head>
 
@@ -132,7 +117,7 @@
 
   <div class="wrap">
     <header>
-      <div class="title">Kano<span class="accent">.</span></div>
+      <div class="title">Kano<span style="color:#33FF33">.</span></div>
       <nav>
         <a href="#support" id="link-support">Support</a>
         <a href="#privacy" id="link-privacy">Privacy</a>
@@ -153,75 +138,65 @@
 
         <section class="section">
           <h2>Contact</h2>
-          <p>Email: <a href="mailto:support@kano.app">support@kano.app</a></p>
+          <p>Email: <a href="mailto:lenja.djaga@gmail.com">lenja.djaga@gmail.com</a></p>
         </section>
 
         <section class="section">
           <h2>Subscriptions</h2>
           <p>
-            Kano Pro subscriptions are managed through your Apple ID.
-            You can manage or cancel subscriptions in
+            Kano Pro subscriptions are managed entirely through your Apple ID.
+            You can manage or cancel your subscription at any time in
             <a href="https://apps.apple.com/account/subscriptions" target="_blank">Apple Subscriptions</a>.
+          </p>
+        </section>
+      </div>
+
+      <!-- PRIVACY -->
+      <div id="privacy" class="page">
+        <section class="section">
+          <h2>Privacy Policy</h2>
+          <p>
+            Kano is designed with privacy in mind. The app does not require accounts,
+            does not use analytics, and does not collect personal data.
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>Local Data Storage</h2>
+          <p>
+            All workout data is stored locally on the user’s device.
+            The developer does not have access to this data.
+            No servers or cloud storage are used.
           </p>
         </section>
 
         <section class="section">
           <h2>AI Features</h2>
           <p>
-            AI feedback is optional and based solely on user-provided workout data.
-            It does not constitute medical advice.
+            Kano includes an optional AI chat feature.
+            When the user sends a message to the AI chat,
+            relevant workout data is sent directly to the OpenAI API
+            solely for generating a response.
           </p>
-        </section>
-      </div>
-
-      <!-- PRIVACY POLICY -->
-      <div id="privacy" class="page">
-        <section class="section">
-          <h2>Privacy Policy</h2>
           <p>
-            Kano respects your privacy. This policy explains how data is handled within the app.
+            This data is not stored, tracked, or accessed by the developer,
+            and is only transmitted at the user’s explicit request.
           </p>
         </section>
 
         <section class="section">
-          <h2>Data Collection</h2>
-          <ul>
-            <li>Workout data entered by the user</li>
-            <li>Exercise names, sets, repetitions, and weights</li>
-            <li>Optional AI chat messages</li>
-          </ul>
-        </section>
-
-        <section class="section">
-          <h2>Data Usage</h2>
+          <h2>Data Sharing</h2>
           <p>
-            Data is used solely to provide app functionality, workout tracking,
-            and optional AI-based training feedback.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>AI Processing</h2>
-          <p>
-            When AI features are used, relevant data is securely processed
-            via a third-party AI service (OpenAI API).
-            Data is not used for advertising or tracking.
-          </p>
-        </section>
-
-        <section class="section">
-          <h2>Data Storage</h2>
-          <p>
-            Workout data is stored locally on your device.
-            Kano does not sell or share personal data.
+            Kano does not sell, share, or monetize user data.
+            No data is used for advertising or tracking purposes.
           </p>
         </section>
 
         <section class="section">
           <h2>Contact</h2>
           <p>
-            For privacy questions, contact:
-            <a href="mailto:support@kano.app">support@kano.app</a>
+            For privacy-related questions, contact:
+            <a href="mailto:lenja.djaga@gmail.com">lenja.djaga@gmail.com</a>
           </p>
         </section>
       </div>
@@ -236,11 +211,9 @@
       const hash = location.hash || "#support";
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
       document.querySelector(hash)?.classList.add("active");
-
       document.getElementById("link-support").classList.toggle("active", hash === "#support");
       document.getElementById("link-privacy").classList.toggle("active", hash === "#privacy");
     }
-
     window.addEventListener("hashchange", updatePage);
     updatePage();
   </script>
